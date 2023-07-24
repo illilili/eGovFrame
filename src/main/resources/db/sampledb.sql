@@ -1,34 +1,34 @@
-CREATE MEMORY TABLE SAMPLE(ID VARCHAR(16) NOT NULL PRIMARY KEY,NAME VARCHAR(50),DESCRIPTION VARCHAR(100),USE_YN CHAR(1),REG_USER VARCHAR(10))
-CREATE MEMORY TABLE IDS(TABLE_NAME VARCHAR(16) NOT NULL PRIMARY KEY,NEXT_ID DECIMAL(30) NOT NULL)
+TABLE SAMPLE(ID VARCHAR(16) NOT NULL PRIMARY KEY,NAME VARCHAR(50),DESCRIPTION VARCHAR(100),USE_YN CHAR(1),REG_USER VARCHAR(10))
+TABLE IDS(TABLE_NAME VARCHAR(16) NOT NULL PRIMARY KEY,NEXT_ID DECIMAL(30) NOT NULL)
 SET SCHEMA PUBLIC
-INSERT INTO SAMPLE VALUES('SAMPLE-00001','Runtime Environment','Foundation Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00002','Runtime Environment','Persistence Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00003','Runtime Environment','Presentation Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00004','Runtime Environment','Business Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00005','Runtime Environment','Batch Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00006','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00007','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00008','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00009','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00010','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00011','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00012','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00013','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00014','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00015','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00016','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00017','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00018','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00019','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00020','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00021','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00022','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00023','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00024','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00025','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00026','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00027','Runtime Environment','Integration Layer','Y','eGov')
-INSERT INTO SAMPLE VALUES('SAMPLE-00028','Runtime Environment','Integration Layer','Y','eGov')
+INSERT INTO SAMPLE VALUES('SAMPLE-00001','Runtime Environment','Foundation Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00002','Runtime Environment','Persistence Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00003','Runtime Environment','Presentation Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00004','Runtime Environment','Business Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00005','Runtime Environment','Batch Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00006','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00007','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00008','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00009','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00010','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00011','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00012','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00013','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00014','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00015','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00016','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00017','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00018','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00019','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00020','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00021','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00022','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00023','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00024','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00025','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00026','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00027','Runtime Environment','Integration Layer','Y','eGov');
+INSERT INTO SAMPLE VALUES('SAMPLE-00028','Runtime Environment','Integration Layer','Y','eGov');
 INSERT INTO SAMPLE VALUES('SAMPLE-00029','Runtime Environment','Integration Layer','Y','eGov')
 INSERT INTO SAMPLE VALUES('SAMPLE-00030','Runtime Environment','Integration Layer','Y','eGov')
 INSERT INTO SAMPLE VALUES('SAMPLE-00031','Runtime Environment','Integration Layer','Y','eGov')
