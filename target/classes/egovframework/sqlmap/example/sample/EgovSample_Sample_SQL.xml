@@ -7,21 +7,21 @@
 	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
 
 	<resultMap id="sample" class="egovframework.example.sample.service.SampleVO">
-		<result property="id" column="id"/>
-		<result property="name" column="name"/>
-		<result property="description" column="description"/>
-		<result property="useYn" column="use_yn"/>
-		<result property="regUser" column="reg_user"/>
+		<result property="id" column="KHJ_ID"/>
+		<result property="name" column="KHJ_NAME"/>
+		<result property="description" column="KHJ_DESCRIPTION"/>
+		<result property="useYn" column="KHJ_USE_YN"/>
+		<result property="regUser" column="KHJ_REG_USER"/>
 	</resultMap>
 
 	<insert id="sampleDAO.insertSample">
 		<![CDATA[
-			INSERT INTO SAMPLE 
-				( ID
-				  , NAME
-				  , DESCRIPTION
-				  , USE_YN
-				  , REG_USER )
+			INSERT INTO KHJ_BOARD
+				( KHJ_ID
+				  , KHJ_NAME
+				  , KHJ_DESCRIPTION
+				  , KHJ_USE_YN
+				  , KHJ_REG_USER )
 			VALUES ( #id#
 				  , #name#
 				  , #description#
@@ -32,57 +32,58 @@
 	
 	<update id="sampleDAO.updateSample">
 		<![CDATA[
-			UPDATE SAMPLE
-			SET ID=#id#
-				, NAME=#name#
-				, DESCRIPTION=#description#
-				, USE_YN=#useYn#
-			WHERE ID=#id#
+			UPDATE KHJ_BOARD
+			SET KHJ_ID=#id#
+				, KHJ_NAME=#name#
+				, KHJ_DESCRIPTION=#description#
+				, KHJ_USE_YN=#useYn#
+			WHERE KHJ_ID=#id#
 		]]>
 	</update>
 	
 	<delete id="sampleDAO.deleteSample">
 		<![CDATA[
-			DELETE FROM SAMPLE 
-			WHERE ID=#id#
+			DELETE FROM KHJ_BOARD 
+			WHERE KHJ_ID=#id#
 		]]>
 	</delete>
     
     <select id="sampleDAO.selectSample" resultMap="sample">
         <![CDATA[
             SELECT
-                ID, NAME, DESCRIPTION, USE_YN, REG_USER
-            FROM SAMPLE 
-            WHERE ID=#id#
+                KHJ_ID, KHJ_NAME, KHJ_DESCRIPTION, KHJ_USE_YN, KHJ_REG_USER
+            FROM KHJ_BOARD
+            WHERE KHJ_ID=#id#
         ]]>
     </select>
 	
 	<select id="sampleDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">
 
 			SELECT
-				ID, NAME, DESCRIPTION, USE_YN, REG_USER
-			FROM SAMPLE
+				KHJ_ID, KHJ_NAME, KHJ_DESCRIPTION, KHJ_USE_YN, KHJ_REG_USER
+			FROM KHJ_BOARD
 			WHERE 1=1
 			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				ID LIKE '%' || #searchKeyword# || '%'
+				KHJ_ID LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
 			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				NAME LIKE '%' || #searchKeyword# || '%'
+				KHJ_NAME LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
-			ORDER BY ID DESC
-			LIMIT #recordCountPerPage# OFFSET #firstIndex#		
+			ORDER BY KHJ_ID DESC
+			OFFSET #firstIndex# ROWS
+			FETCH NEXT #recordCountPerPage# ROWS ONLY	
 	</select>
 	
 	<select id="sampleDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">
 
 			SELECT COUNT(*) totcnt
-			FROM SAMPLE
+			FROM KHJ_BOARD
 			WHERE 1=1
 			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				ID LIKE '%' || #searchKeyword# || '%'
+				KHJ_ID LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
 			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				NAME LIKE '%' || #searchKeyword# || '%'
+				KHJ_NAME LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
 	</select>
 
