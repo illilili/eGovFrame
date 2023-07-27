@@ -17,9 +17,9 @@ package egovframework.example.sample.service.impl;
 
 import java.util.List;
 
-import egovframework.example.sample.service.EgovSampleService;
-import egovframework.example.sample.service.SampleDefaultVO;
-import egovframework.example.sample.service.SampleVO;
+import egovframework.example.sample.service.KHJ_EgovSampleService;
+import egovframework.example.sample.service.KHJ_SampleDefaultVO;
+import egovframework.example.sample.service.KHJ_SampleVO;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
@@ -48,14 +48,14 @@ import org.springframework.stereotype.Service;
  */
 
 @Service("sampleService")
-public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements EgovSampleService {
+public class KHJ_EgovSampleServiceImpl extends EgovAbstractServiceImpl implements KHJ_EgovSampleService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(EgovSampleServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(KHJ_EgovSampleServiceImpl.class);
 
 	/** SampleDAO */
 	// TODO ibatis 사용
 	@Resource(name = "sampleDAO")
-	private SampleDAO sampleDAO;
+	private KHJ_SampleDAO sampleDAO;
 	// TODO mybatis 사용
 	//  @Resource(name="sampleMapper")
 	//	private SampleMapper sampleDAO;
@@ -71,7 +71,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception Exception
 	 */
 	@Override
-	public String insertSample(SampleVO vo) throws Exception {
+	public String insertSample(KHJ_SampleVO vo) throws Exception {
 		LOGGER.debug(vo.toString());
 
 		/** ID Generation Service */
@@ -90,7 +90,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception Exception
 	 */
 	@Override
-	public void updateSample(SampleVO vo) throws Exception {
+	public void updateSample(KHJ_SampleVO vo) throws Exception {
 		sampleDAO.updateSample(vo);
 	}
 
@@ -101,7 +101,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception Exception
 	 */
 	@Override
-	public void deleteSample(SampleVO vo) throws Exception {
+	public void deleteSample(KHJ_SampleVO vo) throws Exception {
 		sampleDAO.deleteSample(vo);
 	}
 
@@ -112,8 +112,8 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception Exception
 	 */
 	@Override
-	public SampleVO selectSample(SampleVO vo) throws Exception {
-		SampleVO resultVO = sampleDAO.selectSample(vo);
+	public KHJ_SampleVO selectSample(KHJ_SampleVO vo) throws Exception {
+		KHJ_SampleVO resultVO = sampleDAO.selectSample(vo);
 		if (resultVO == null)
 			throw processException("info.nodata.msg");
 		return resultVO;
@@ -126,7 +126,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception Exception
 	 */
 	@Override
-	public List<?> selectSampleList(SampleDefaultVO searchVO) throws Exception {
+	public List<?> selectSampleList(KHJ_SampleDefaultVO searchVO) throws Exception {
 		return sampleDAO.selectSampleList(searchVO);
 	}
 
@@ -137,7 +137,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 * @exception
 	 */
 	@Override
-	public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
+	public int selectSampleListTotCnt(KHJ_SampleDefaultVO searchVO) {
 		return sampleDAO.selectSampleListTotCnt(searchVO);
 	}
 
