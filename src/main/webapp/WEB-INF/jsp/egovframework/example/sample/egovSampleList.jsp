@@ -111,11 +111,11 @@
         			<c:forEach var="result" items="${resultList}" varStatus="status">
             			<tr>
             				<td align="center" class="listtd"><c:out value="${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}"/></td>
-            				<td align="center" class="listtd"><a href="javascript:fn_egov_select('<c:out value="${result.ktsId}"/>')"><c:out value="${result.ktsId}"/></a></td>
-            				<td align="left" class="listtd"><c:out value="${result.ktsName}"/>&nbsp;</td>
-            				<td align="center" class="listtd"><c:out value="${result.ktsDescription}"/>&nbsp;</td>
-            				<td align="center" class="listtd"><c:out value="${result.ktsUseYn}"/>&nbsp;</td>
-            				<td align="center" class="listtd"><c:out value="${result.ktsRegUser}"/>&nbsp;</td>
+            				<td align="center" class="listtd"><a href="javascript:fn_egov_select('<c:out value="${result.hghId}"/>')"><c:out value="${result.hghId}"/></a></td>
+            				<td align="left" class="listtd"><c:out value="${result.hghName}"/>&nbsp;</td>
+            				<td align="center" class="listtd"><c:out value="${result.hghDescription}"/>&nbsp;</td>
+            				<td align="center" class="listtd"><c:out value="${result.hghUseYn}"/>&nbsp;</td>
+            				<td align="center" class="listtd"><c:out value="${result.hghRegUser}"/>&nbsp;</td>
             			</tr>
         			</c:forEach>
         		</table>
