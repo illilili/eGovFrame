@@ -17,9 +17,9 @@ package egovframework.example.sample.web;
 
 import java.util.List;
 
-import egovframework.example.sample.service.EgovSampleService;
-import egovframework.example.sample.service.SampleDefaultVO;
-import egovframework.example.sample.service.SampleVO;
+import egovframework.example.sample.service.KTS_EgovSampleService;
+import egovframework.example.sample.service.KTS_SampleDefaultVO;
+import egovframework.example.sample.service.KTS_SampleVO;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -55,11 +55,11 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
  */
 
 @Controller
-public class EgovSampleController {
+public class KTS_EgovSampleController {
 
 	/** EgovSampleService */
 	@Resource(name = "sampleService")
-	private EgovSampleService sampleService;
+	private KTS_EgovSampleService sampleService;
 
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
@@ -77,26 +77,26 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/egovSampleList.do")
-	public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model) throws Exception {
+	public String selectSampleList(@ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
-		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-		searchVO.setPageSize(propertiesService.getInt("pageSize"));
+		KTS_searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+		KTS_searchVO.setPageSize(propertiesService.getInt("pageSize"));
 
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
+		paginationInfo.setCurrentPageNo(KTS_searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(KTS_searchVO.getPageUnit());
+		paginationInfo.setPageSize(KTS_searchVO.getPageSize());
 
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		KTS_searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		KTS_searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		KTS_searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> sampleList = sampleService.selectSampleList(searchVO);
+		List<?> sampleList = sampleService.selectSampleList(KTS_searchVO);
 		model.addAttribute("resultList", sampleList);
 
-		int totCnt = sampleService.selectSampleListTotCnt(searchVO);
+		int totCnt = sampleService.selectSampleListTotCnt(KTS_searchVO);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
@@ -111,8 +111,8 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
-	public String addSampleView(@ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		model.addAttribute("sampleVO", new SampleVO());
+	public String addSampleView(@ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, Model model) throws Exception {
+		model.addAttribute("sampleVO", new KTS_SampleVO());
 		return "sample/egovSampleRegister";
 	}
 
@@ -125,18 +125,18 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.POST)
-	public String addSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String addSample(@ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO searchVO, KTS_SampleVO KTS_sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
 		// Server-Side Validation
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(KTS_sampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("sampleVO", KTS_sampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.insertSample(sampleVO);
+		sampleService.insertSample(KTS_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
@@ -150,11 +150,11 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSampleView.do")
-	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		SampleVO sampleVO = new SampleVO();
-		sampleVO.setId(id);
+	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, Model model) throws Exception {
+		KTS_SampleVO KTS_sampleVO = new KTS_SampleVO();
+		KTS_sampleVO.setId(id);
 		// 변수명은 CoC 에 따라 sampleVO
-		model.addAttribute(selectSample(sampleVO, searchVO));
+		model.addAttribute(selectSample(KTS_sampleVO, KTS_searchVO));
 		return "sample/egovSampleRegister";
 	}
 
@@ -166,8 +166,8 @@ public class EgovSampleController {
 	 * @return @ModelAttribute("sampleVO") - 조회한 정보
 	 * @exception Exception
 	 */
-	public SampleVO selectSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO) throws Exception {
-		return sampleService.selectSample(sampleVO);
+	public KTS_SampleVO selectSample(KTS_SampleVO KTS_sampleVO, @ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO) throws Exception {
+		return sampleService.selectSample(KTS_sampleVO);
 	}
 
 	/**
@@ -179,17 +179,17 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSample.do")
-	public String updateSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String updateSample(@ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, KTS_SampleVO KTS_sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(KTS_sampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("KTS_sampleVO", KTS_sampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.updateSample(sampleVO);
+		sampleService.updateSample(KTS_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
@@ -203,8 +203,8 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/deleteSample.do")
-	public String deleteSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO, SessionStatus status) throws Exception {
-		sampleService.deleteSample(sampleVO);
+	public String deleteSample(KTS_SampleVO KTS_sampleVO, @ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, SessionStatus status) throws Exception {
+		sampleService.deleteSample(KTS_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}

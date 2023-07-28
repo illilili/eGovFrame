@@ -58,7 +58,7 @@
 </head>
 
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
-    <form:form modelAttribute="searchVO" id="listForm" name="listForm" method="post">
+    <form:form modelAttribute="KTS_searchVO" id="listForm" name="listForm" method="post">
         <input type="hidden" name="selectedId" />
         <div id="content_pop">
         	<!-- 타이틀 -->
@@ -110,7 +110,7 @@
         			</tr>
         			<c:forEach var="result" items="${resultList}" varStatus="status">
             			<tr>
-            				<td align="center" class="listtd"><c:out value="${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}"/></td>
+            				<td align="center" class="listtd"><c:out value="${paginationInfo.totalRecordCount+1 - ((KTS_searchVO.pageIndex-1) * KTS_searchVO.pageSize + status.count)}"/></td>
             				<td align="center" class="listtd"><a href="javascript:fn_egov_select('<c:out value="${result.ktsId}"/>')"><c:out value="${result.ktsId}"/></a></td>
             				<td align="left" class="listtd"><c:out value="${result.ktsName}"/>&nbsp;</td>
             				<td align="center" class="listtd"><c:out value="${result.ktsDescription}"/>&nbsp;</td>
