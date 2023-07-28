@@ -35,7 +35,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  *  Copyright (C) by MOPAS All right reserved.
  */
-public class SampleDefaultVO implements Serializable {
+public class KTS_SampleDefaultVO implements Serializable {
 
 	/**
 	 *  serialVersion UID

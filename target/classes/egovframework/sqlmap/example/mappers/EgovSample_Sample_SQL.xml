@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="egovframework.example.sample.service.impl.SampleMapper">
 
-	<resultMap id="sample" type="egovframework.example.sample.service.SampleVO">
-		<result property="id" column="id"/>
-		<result property="name" column="name"/>
-		<result property="description" column="description"/>
-		<result property="useYn" column="use_yn"/>
-		<result property="regUser" column="reg_user"/>
+	<resultMap id="sample" type="egovframework.example.sample.service.KTS_SampleVO">
+		<result property="id" column="KTS_id"/>
+		<result property="name" column="KTS_name"/>
+		<result property="description" column="KTS_description"/>
+		<result property="useYn" column="KTS_use_yn"/>
+		<result property="regUser" column="KTS_reg_user"/>
 	</resultMap>
 
 	<insert id="insertSample" parameterType="SampleVO">
 
-			INSERT INTO SAMPLE
-				( ID
-				  , NAME
-				  , DESCRIPTION
-				  , USE_YN
-				  , REG_USER )
+			INSERT INTO KTS_BOARD
+				( KTS_ID
+				  , KTS_NAME
+				  , KTS_DESCRIPTION
+				  , KTS_USE_YN
+				  , KTS_REG_USER )
 			VALUES ( #{id}
 				  , #{name}
 				  , #{description}
@@ -28,36 +28,36 @@
 
 	<update id="updateSample">
 
-			UPDATE SAMPLE
-			SET ID=#{id}
-				, NAME=#{name}
-				, DESCRIPTION=#{description}
-				, USE_YN=#{useYn}
-				  WHERE ID=#{id}
+			UPDATE KTS_BOARD
+			SET KTS_ID=#{id}
+				, KTS_NAME=#{name}
+				, KTS_DESCRIPTION=#{description}
+				, KTS_USE_YN=#{useYn}
+				  KTS_WHERE ID=#{id}
 
 	</update>
 
 	<delete id="deleteSample">
 
-			DELETE FROM SAMPLE
-			WHERE ID=#{id}
+			DELETE KTS_BOARD
+			WHERE KTS_ID=#{id}
 
 	</delete>
 
 	<select id="selectSample" resultMap="sample">
 
 			SELECT
-				ID, NAME, DESCRIPTION, USE_YN, REG_USER
-			FROM SAMPLE
-			WHERE ID=#{id}
+				KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+			FROM KTS_BOARD
+			WHERE KTS_ID=#{id}
 
 	</select>
 
 	<select id="selectSampleList" parameterType="searchVO" resultType="egovMap">
 
 			SELECT
-				ID, NAME, DESCRIPTION, USE_YN, REG_USER
-			FROM SAMPLE
+				KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+			FROM KTS_BOARD
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
@@ -69,22 +69,23 @@
 					</when>
 				</choose>
 			</if>
-			ORDER BY ID ASC
-			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+			ORDER BY KTS_ID DESC
+			OFFSET #firstIndex# ROWS
+			FETCH NEXT #recordCountPerPage# ROWS ONLY	
 	</select>
 
 	<select id="selectSampleListTotCnt" parameterType="searchVO" resultType="int">
 
 			SELECT COUNT(*) totcnt
-			FROM SAMPLE
+			FROM KTS_BOARD
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
 		        <choose>
 		            <when test="searchCondition == 0">
-						AND ID LIKE '%' || #{searchKeyword} || '%'
+						AND KTS_ID LIKE '%' || #{searchKeyword} || '%'
 					</when>
 		            <when test="searchCondition == 1">
-						AND	NAME LIKE '%' || #{searchKeyword} || '%'
+						AND	KTS_NAME LIKE '%' || #{searchKeyword} || '%'
 					</when>
 				</choose>
 			</if>

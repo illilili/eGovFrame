@@ -13,20 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package egovframework.example.sample.service.impl;
+package egovframework.example.sample.service;
 
 import java.util.List;
 
-import egovframework.example.sample.service.SampleDefaultVO;
-import egovframework.example.sample.service.SampleVO;
-
-import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;
-
-import org.springframework.stereotype.Repository;
-
 /**
- * @Class Name : SampleDAO.java
- * @Description : Sample DAO Class
+ * @Class Name : EgovSampleService.java
+ * @Description : EgovSampleService Class
  * @Modification Information
  * @
  * @  수정일      수정자              수정내용
@@ -40,9 +33,7 @@ import org.springframework.stereotype.Repository;
  *
  *  Copyright (C) by MOPAS All right reserved.
  */
-
-@Repository("sampleDAO")
-public class SampleDAO extends EgovAbstractDAO {
+public interface KTS_EgovSampleService {
 
 	/**
 	 * 글을 등록한다.
@@ -50,9 +41,7 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @return 등록 결과
 	 * @exception Exception
 	 */
-	public String insertSample(SampleVO vo) throws Exception {
-		return (String) insert("sampleDAO.insertSample", vo);
-	}
+	String insertSample(KTS_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 수정한다.
@@ -60,9 +49,7 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @return void형
 	 * @exception Exception
 	 */
-	public void updateSample(SampleVO vo) throws Exception {
-		update("sampleDAO.updateSample", vo);
-	}
+	void updateSample(KTS_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 삭제한다.
@@ -70,9 +57,7 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @return void형
 	 * @exception Exception
 	 */
-	public void deleteSample(SampleVO vo) throws Exception {
-		delete("sampleDAO.deleteSample", vo);
-	}
+	void deleteSample(KTS_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 조회한다.
@@ -80,28 +65,22 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @return 조회한 글
 	 * @exception Exception
 	 */
-	public SampleVO selectSample(SampleVO vo) throws Exception {
-		return (SampleVO) select("sampleDAO.selectSample", vo);
-	}
+	KTS_SampleVO selectSample(KTS_SampleVO vo) throws Exception;
 
 	/**
 	 * 글 목록을 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param searchVO - 조회할 정보가 담긴 VO
 	 * @return 글 목록
 	 * @exception Exception
 	 */
-	public List<?> selectSampleList(SampleDefaultVO searchVO) throws Exception {
-		return list("sampleDAO.selectSampleList", searchVO);
-	}
+	List<?> selectSampleList(KTS_SampleDefaultVO searchVO) throws Exception;
 
 	/**
 	 * 글 총 갯수를 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param searchVO - 조회할 정보가 담긴 VO
 	 * @return 글 총 갯수
 	 * @exception
 	 */
-	public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
-		return (Integer) select("sampleDAO.selectSampleListTotCnt", searchVO);
-	}
+	int selectSampleListTotCnt(KTS_SampleDefaultVO searchVO);
 
 }
