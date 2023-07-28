@@ -30,7 +30,7 @@
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
     
     <!--For Commons Validator Client Side-->
-    <script type="text/javascript" src="<c:url value='/cmmn/KHJ_validator.do'/>"></script>
+    <script type="text/javascript" src="<c:url value='/KHJ_cmmn/KHJ_validator.do'/>"></script>
     <validator:javascript formName="KHJ_SampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
     
     <script type="text/javaScript" language="javascript" defer="defer">

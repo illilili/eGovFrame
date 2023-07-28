@@ -17,10 +17,6 @@ package egovframework.example.sample.web;
 
 import java.util.List;
 
-import egovframework.example.sample.service.KHJ_EgovSampleService;
-import egovframework.example.sample.service.KHJ_SampleDefaultVO;
-import egovframework.example.sample.service.KHJ_SampleVO;
-
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -36,6 +32,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springmodules.validation.commons.DefaultBeanValidator;
+
+import egovframework.example.sample.service.KHJ_EgovSampleService;
+import egovframework.example.sample.service.KHJ_SampleDefaultVO;
+import egovframework.example.sample.service.KHJ_SampleVO;
 
 /**
  * @Class Name : EgovSampleController.java
@@ -100,7 +100,7 @@ public class KHJ_EgovSampleController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "sample/KHJ_egovSampleList";
+		return "KHJ_sample/KHJ_egovSampleList";
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class KHJ_EgovSampleController {
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
 	public String addSampleView(@ModelAttribute("KHJ_searchVO") KHJ_SampleDefaultVO KHJ_searchVO, Model model) throws Exception {
 		model.addAttribute("KHJ_sampleVO", new KHJ_SampleVO());
-		return "sample/KHJ_egovSampleRegister";
+		return "KHJ_sample/KHJ_egovSampleRegister";
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class KHJ_EgovSampleController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("KHJ_sampleVO", KHJ_sampleVO);
-			return "sample/KHJ_egovSampleRegister";
+			return "KHJ_sample/KHJ_egovSampleRegister";
 		}
 
 		sampleService.insertSample(KHJ_sampleVO);
@@ -155,7 +155,7 @@ public class KHJ_EgovSampleController {
 		KHJ_sampleVO.setId(id);
 		// 변수명은 CoC 에 따라 sampleVO
 		model.addAttribute(selectSample(KHJ_sampleVO, KHJ_searchVO));
-		return "sample/KHJ_egovSampleRegister";
+		return "KHJ_sample/KHJ_egovSampleRegister";
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class KHJ_EgovSampleController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("KHJ_sampleVO", KHJ_sampleVO);
-			return "sample/KHJ_egovSampleRegister";
+			return "KHJ_sample/KHJ_egovSampleRegister";
 		}
 
 		sampleService.updateSample(KHJ_sampleVO);

@@ -17,10 +17,10 @@ package egovframework.example.sample.service.impl;
 
 import java.util.List;
 
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+
 import egovframework.example.sample.service.KHJ_SampleDefaultVO;
 import egovframework.example.sample.service.KHJ_SampleVO;
-
-import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 
 /**
  * sample에 관한 데이터처리 매퍼 클래스

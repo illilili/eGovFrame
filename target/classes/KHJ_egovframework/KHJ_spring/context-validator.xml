@@ -9,8 +9,8 @@
     <bean id="validatorFactory" class="org.springmodules.validation.commons.DefaultValidatorFactory">
         <property name="validationConfigLocations">
             <list>
-                <value>/WEB-INF/config/egovframework/validator/validator-rules.xml</value>
-                <value>/WEB-INF/config/egovframework/validator/validator.xml</value>
+                <value>/WEB-INF/KHJ_config/KHJ_egovframework/KHJ_validator/validator-rules.xml</value>
+                <value>/WEB-INF/KHJ_config/KHJ_egovframework/KHJ_validator/validator.xml</value>
             </list>
         </property>
     </bean>

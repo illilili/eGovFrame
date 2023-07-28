@@ -28,7 +28,7 @@
     
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:egovframework/spring/context-*.xml</param-value>
+		<param-value>classpath*:KHJ_egovframework/KHJ_spring/context-*.xml</param-value>
 	</context-param>
     
 	<listener>
@@ -40,7 +40,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml</param-value>
+			<param-value>/WEB-INF/KHJ_config/KHJ_egovframework/KHJ_springmvc/dispatcher-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

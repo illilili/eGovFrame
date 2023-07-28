@@ -46,7 +46,7 @@
 
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
-	    p:prefix="/WEB-INF/jsp/egovframework/example/" p:suffix=".jsp"/>
+	    p:prefix="/WEB-INF/KHJ_jsp/KHJ_egovframework/KHJ_example/" p:suffix=".jsp"/>
 
     <!-- For Pagination Tag -->
     <bean id="imageRenderer" class="egovframework.example.cmmn.web.EgovImgPaginationRenderer"/>
@@ -60,5 +60,5 @@
     </bean>
 	<!-- /For Pagination Tag -->
 
-    <mvc:view-controller path="/cmmn/KHJ_validator.do" view-name="cmmn/KHJ_validator"/>
+    <mvc:view-controller path="/KHJ_cmmn/KHJ_validator.do" view-name="KHJ_cmmn/KHJ_validator"/>
 </beans>
