@@ -73,10 +73,10 @@ public class KHJ_EgovSampleController {
 	 * 글 목록을 조회한다. (pageing)
 	 * @param searchVO - 조회할 정보가 담긴 SampleDefaultVO
 	 * @param model
-	 * @return "egovSampleList"
+	 * @return "KHJ_egovSampleList"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/egovSampleList.do")
+	@RequestMapping(value = "/KHJ_egovSampleList.do")
 	public String selectSampleList(@ModelAttribute("KHJ_searchVO") KHJ_SampleDefaultVO KHJ_searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
@@ -100,20 +100,20 @@ public class KHJ_EgovSampleController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "sample/egovSampleList";
+		return "sample/KHJ_egovSampleList";
 	}
 
 	/**
 	 * 글 등록 화면을 조회한다.
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param model
-	 * @return "egovSampleRegister"
+	 * @return "KHJ_egovSampleRegister"
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
 	public String addSampleView(@ModelAttribute("KHJ_searchVO") KHJ_SampleDefaultVO KHJ_searchVO, Model model) throws Exception {
 		model.addAttribute("KHJ_sampleVO", new KHJ_SampleVO());
-		return "sample/egovSampleRegister";
+		return "sample/KHJ_egovSampleRegister";
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class KHJ_EgovSampleController {
 	 * @param sampleVO - 등록할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
-	 * @return "forward:/egovSampleList.do"
+	 * @return "forward:/KHJ_egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.POST)
@@ -133,12 +133,12 @@ public class KHJ_EgovSampleController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("KHJ_sampleVO", KHJ_sampleVO);
-			return "sample/egovSampleRegister";
+			return "sample/KHJ_egovSampleRegister";
 		}
 
 		sampleService.insertSample(KHJ_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KHJ_egovSampleList.do";
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class KHJ_EgovSampleController {
 	 * @param id - 수정할 글 id
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param model
-	 * @return "egovSampleRegister"
+	 * @return "KHJ_egovSampleRegister"
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSampleView.do")
@@ -155,7 +155,7 @@ public class KHJ_EgovSampleController {
 		KHJ_sampleVO.setId(id);
 		// 변수명은 CoC 에 따라 sampleVO
 		model.addAttribute(selectSample(KHJ_sampleVO, KHJ_searchVO));
-		return "sample/egovSampleRegister";
+		return "sample/KHJ_egovSampleRegister";
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class KHJ_EgovSampleController {
 	 * @param sampleVO - 수정할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
-	 * @return "forward:/egovSampleList.do"
+	 * @return "forward:/KHJ_egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSample.do")
@@ -186,12 +186,12 @@ public class KHJ_EgovSampleController {
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("KHJ_sampleVO", KHJ_sampleVO);
-			return "sample/egovSampleRegister";
+			return "sample/KHJ_egovSampleRegister";
 		}
 
 		sampleService.updateSample(KHJ_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KHJ_egovSampleList.do";
 	}
 
 	/**
@@ -199,14 +199,14 @@ public class KHJ_EgovSampleController {
 	 * @param sampleVO - 삭제할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
-	 * @return "forward:/egovSampleList.do"
+	 * @return "forward:/KHJ_egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping("/deleteSample.do")
 	public String deleteSample(KHJ_SampleVO KHJ_sampleVO, @ModelAttribute("KHJ_searchVO") KHJ_SampleDefaultVO KHJ_searchVO, SessionStatus status) throws Exception {
 		sampleService.deleteSample(KHJ_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KHJ_egovSampleList.do";
 	}
 
 }
