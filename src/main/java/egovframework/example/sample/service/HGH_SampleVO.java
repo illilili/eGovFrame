@@ -31,7 +31,7 @@ package egovframework.example.sample.service;
  *
  *  Copyright (C) by MOPAS All right reserved.
  */
-public class SampleVO extends SampleDefaultVO {
+public class HGH_SampleVO extends HGH_SampleDefaultVO {
 
 	private static final long serialVersionUID = 1L;
 

@@ -23,7 +23,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <c:set var="registerFlag" value="${empty sampleVO.id ? 'create' : 'modify'}"/>
+    <c:set var="registerFlag" value="${empty HGH_sampleVO.id ? 'create' : 'modify'}"/>
     <title>Sample <c:if test="${registerFlag == 'create'}"><spring:message code="button.create" /></c:if>
                   <c:if test="${registerFlag == 'modify'}"><spring:message code="button.modify" /></c:if>
     </title>
@@ -31,7 +31,7 @@
     
     <!--For Commons Validator Client Side-->
     <script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script>
-    <validator:javascript formName="sampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
+    <validator:javascript formName="HGH_sampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
     
     <script type="text/javaScript" language="javascript" defer="defer">
         <!--
@@ -50,7 +50,7 @@
         /* 글 등록 function */
         function fn_egov_save() {
         	frm = document.detailForm;
-        	if(!validateSampleVO(frm)){
+        	if(!validateHGH_SampleVO(frm)){
                 return;
             }else{
             	frm.action = "<c:url value="${registerFlag == 'create' ? '/addSample.do' : '/updateSample.do'}"/>";
@@ -63,7 +63,7 @@
 </head>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
 
-<form:form modelAttribute="sampleVO" id="detailForm" name="detailForm">
+<form:form modelAttribute="HGH_sampleVO" id="detailForm" name="detailForm">
     <div id="content_pop">
     	<!-- 타이틀 -->
     	<div id="title">
@@ -160,9 +160,9 @@
     	</div>
     </div>
     <!-- 검색조건 유지 -->
-    <input type="hidden" name="searchCondition" value="<c:out value='${searchVO.searchCondition}'/>"/>
-    <input type="hidden" name="searchKeyword" value="<c:out value='${searchVO.searchKeyword}'/>"/>
-    <input type="hidden" name="pageIndex" value="<c:out value='${searchVO.pageIndex}'/>"/>
+    <input type="hidden" name="searchCondition" value="<c:out value='${HGH_searchVO.searchCondition}'/>"/>
+    <input type="hidden" name="searchKeyword" value="<c:out value='${HGH_searchVO.searchKeyword}'/>"/>
+    <input type="hidden" name="pageIndex" value="<c:out value='${HGH_searchVO.pageIndex}'/>"/>
 </form:form>
 </body>
 </html>

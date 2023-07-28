@@ -17,9 +17,9 @@ package egovframework.example.sample.web;
 
 import java.util.List;
 
-import egovframework.example.sample.service.EgovSampleService;
-import egovframework.example.sample.service.SampleDefaultVO;
-import egovframework.example.sample.service.SampleVO;
+import egovframework.example.sample.service.HGH_EgovSampleService;
+import egovframework.example.sample.service.HGH_SampleDefaultVO;
+import egovframework.example.sample.service.HGH_SampleVO;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -55,11 +55,11 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
  */
 
 @Controller
-public class EgovSampleController {
+public class HGH_EgovSampleController {
 
 	/** EgovSampleService */
 	@Resource(name = "sampleService")
-	private EgovSampleService sampleService;
+	private HGH_EgovSampleService sampleService;
 
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
@@ -77,26 +77,26 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/egovSampleList.do")
-	public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model) throws Exception {
+	public String selectSampleList(@ModelAttribute("searchVO") HGH_SampleDefaultVO HGH_searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
-		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-		searchVO.setPageSize(propertiesService.getInt("pageSize"));
+		HGH_searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+		HGH_searchVO.setPageSize(propertiesService.getInt("pageSize"));
 
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
+		paginationInfo.setCurrentPageNo(HGH_searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(HGH_searchVO.getPageUnit());
+		paginationInfo.setPageSize(HGH_searchVO.getPageSize());
 
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		HGH_searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		HGH_searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		HGH_searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> sampleList = sampleService.selectSampleList(searchVO);
+		List<?> sampleList = sampleService.selectSampleList(HGH_searchVO);
 		model.addAttribute("resultList", sampleList);
 
-		int totCnt = sampleService.selectSampleListTotCnt(searchVO);
+		int totCnt = sampleService.selectSampleListTotCnt(HGH_searchVO);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
@@ -111,8 +111,8 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
-	public String addSampleView(@ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		model.addAttribute("sampleVO", new SampleVO());
+	public String addSampleView(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, Model model) throws Exception {
+		model.addAttribute("HGH_sampleVO", new HGH_SampleVO());
 		return "sample/egovSampleRegister";
 	}
 
@@ -125,18 +125,18 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.POST)
-	public String addSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String addSample(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, HGH_SampleVO HGH_sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
 		// Server-Side Validation
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(HGH_sampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("HGH_sampleVO", HGH_sampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.insertSample(sampleVO);
+		sampleService.insertSample(HGH_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
@@ -150,11 +150,11 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSampleView.do")
-	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		SampleVO sampleVO = new SampleVO();
-		sampleVO.setId(id);
+	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, Model model) throws Exception {
+		HGH_SampleVO HGH_sampleVO = new HGH_SampleVO();
+		HGH_sampleVO.setId(id);
 		// 변수명은 CoC 에 따라 sampleVO
-		model.addAttribute(selectSample(sampleVO, searchVO));
+		model.addAttribute(selectSample(HGH_sampleVO, searchVO));
 		return "sample/egovSampleRegister";
 	}
 
@@ -163,33 +163,33 @@ public class EgovSampleController {
 	 * @param sampleVO - 조회할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
-	 * @return @ModelAttribute("sampleVO") - 조회한 정보
+	 * @return @ModelAttribute("HGH_sampleVO") - 조회한 정보
 	 * @exception Exception
 	 */
-	public SampleVO selectSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO) throws Exception {
-		return sampleService.selectSample(sampleVO);
+	public HGH_SampleVO selectSample(HGH_SampleVO HGH_sampleVO, @ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO) throws Exception {
+		return sampleService.selectSample(HGH_sampleVO);
 	}
 
 	/**
 	 * 글을 수정한다.
-	 * @param sampleVO - 수정할 정보가 담긴 VO
+	 * @param HGH_sampleVO - 수정할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
 	 * @return "forward:/egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSample.do")
-	public String updateSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String updateSample(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, HGH_SampleVO HGH_sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(HGH_sampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("HGH_sampleVO", HGH_sampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.updateSample(sampleVO);
+		sampleService.updateSample(HGH_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
@@ -203,8 +203,8 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/deleteSample.do")
-	public String deleteSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO, SessionStatus status) throws Exception {
-		sampleService.deleteSample(sampleVO);
+	public String deleteSample(HGH_SampleVO HGH_sampleVO, @ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, SessionStatus status) throws Exception {
+		sampleService.deleteSample(HGH_sampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}

@@ -4,24 +4,24 @@
 <sqlMap namespace="Sample">
 
    <typeAlias  alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
-   <typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
+   <typeAlias  alias="searchVO" type="egovframework.example.sample.service.HGH_SampleDefaultVO"/>
 
-   <resultMap id="sample" class="egovframework.example.sample.service.SampleVO">
-      <result property="id" column="KTS_id"/>
-      <result property="name" column="KTS_name"/>
-      <result property="description" column="KTS_description"/>
-      <result property="useYn" column="KTS_use_yn"/>
-      <result property="regUser" column="KTS_reg_user"/>
+   <resultMap id="sample" class="egovframework.example.sample.service.HGH_SampleVO">
+      <result property="id" column="HGH_id"/>
+      <result property="name" column="HGH_name"/>
+      <result property="description" column="HGH_description"/>
+      <result property="useYn" column="HGH_use_yn"/>
+      <result property="regUser" column="HGH_reg_user"/>
    </resultMap>
 
    <insert id="sampleDAO.insertSample">
       <![CDATA[
-         INSERT INTO KTS_BOARD
-            ( KTS_ID
-              , KTS_NAME
-              , KTS_DESCRIPTION
-              , KTS_USE_YN
-              , KTS_REG_USER )
+         INSERT INTO HGH_BOARD
+            ( HGH_ID
+              , HGH_NAME
+              , HGH_DESCRIPTION
+              , HGH_USE_YN
+              , HGH_REG_USER )
          VALUES ( #id#
               , #name#
               , #description#
@@ -32,44 +32,44 @@
    
    <update id="sampleDAO.updateSample">
       <![CDATA[
-         UPDATE KTS_BOARD
-         SET KTS_ID=#id#
-            , KTS_NAME=#name#
-            , KTS_DESCRIPTION=#description#
-            , KTS_USE_YN=#useYn#
-         WHERE KTS_ID=#id#
+         UPDATE HGH_BOARD
+         SET HGH_ID=#id#
+            , HGH_NAME=#name#
+            , HGH_DESCRIPTION=#description#
+            , HGH_USE_YN=#useYn#
+         WHERE HGH_ID=#id#
       ]]>
    </update>
    
    <delete id="sampleDAO.deleteSample">
       <![CDATA[
-         DELETE FROM KTS_BOARD 
-         WHERE KTS_ID=#id#
+         DELETE FROM HGH_BOARD 
+         WHERE HGH_ID=#id#
       ]]>
    </delete>
     
     <select id="sampleDAO.selectSample" resultMap="sample">
         <![CDATA[
             SELECT
-                KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
-            FROM KTS_BOARD
-            WHERE KTS_ID=#id#
+                HGH_ID, HGH_NAME, HGH_DESCRIPTION, HGH_USE_YN, HGH_REG_USER
+            FROM HGH_BOARD
+            WHERE HGH_ID=#id#
         ]]>
     </select>
    
    <select id="sampleDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">
 
          SELECT
-            KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
-         FROM KTS_BOARD
+            HGH_ID, HGH_NAME, HGH_DESCRIPTION, HGH_USE_YN, HGH_REG_USER
+         FROM HGH_BOARD
          WHERE 1=1
          <isEqual prepend="AND" property="searchCondition" compareValue="0">
-            KTS_ID LIKE '%' || #searchKeyword# || '%'
+            HGH_ID LIKE '%' || #searchKeyword# || '%'
          </isEqual>
          <isEqual prepend="AND" property="searchCondition" compareValue="1">
-            KTS_NAME LIKE '%' || #searchKeyword# || '%'
+            HGH_NAME LIKE '%' || #searchKeyword# || '%'
          </isEqual>
-         ORDER BY KTS_ID DESC
+         ORDER BY HGH_ID DESC
          OFFSET #firstIndex# ROWS
          FETCH NEXT #recordCountPerPage# ROWS ONLY   
    </select>
@@ -77,13 +77,13 @@
    <select id="sampleDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">
 
          SELECT COUNT(*) totcnt
-         FROM KTS_BOARD
+         FROM HGH_BOARD
          WHERE 1=1
          <isEqual prepend="AND" property="searchCondition" compareValue="0">
-            KTS_ID LIKE '%' || #searchKeyword# || '%'
+            HGH_ID LIKE '%' || #searchKeyword# || '%'
          </isEqual>
          <isEqual prepend="AND" property="searchCondition" compareValue="1">
-            KTS_NAME LIKE '%' || #searchKeyword# || '%'
+            HGH_NAME LIKE '%' || #searchKeyword# || '%'
          </isEqual>
    </select>
 
