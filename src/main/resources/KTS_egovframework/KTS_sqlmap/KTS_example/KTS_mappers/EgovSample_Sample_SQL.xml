@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.KTS_SampleMapper">
+
+	<resultMap id="sample" type="egovframework.example.sample.service.KTS_SampleVO">
+		<result property="id" column="KTS_ID"/>
+		<result property="name" column="KTS_NAME"/>
+		<result property="description" column="KTS_DESCRIPTION"/>
+		<result property="useYn" column="KTS_USE_YN"/>
+		<result property="regUser" column="KTS_REG_USER"/>
+	</resultMap>
+
+	<insert id="insertSample" parameterType="SampleVO">
+
+			INSERT INTO KTS_BOARD
+				( KTS_ID
+				  , KTS_NAME
+				  , KTS_DESCRIPTION
+				  , KTS_USE_YN
+				  , KTS_REG_USER )
+			VALUES ( #{id}
+				  , #{name}
+				  , #{description}
+				  , #{useYn}
+				  , #{regUser} )
+
+	</insert>
+
+	<update id="updateSample">
+
+			UPDATE KTS_BOARD
+			SET KTS_ID=#{id}
+				, KTS_NAME=#{name}
+				, KTS_DESCRIPTION=#{description}
+				, KTS_USE_YN=#{useYn}
+				  WHERE KTS_ID=#{id}
+
+	</update>
+
+	<delete id="deleteSample">
+
+			DELETE FROM KTS_BOARD
+			WHERE KTS_ID=#{id}
+
+	</delete>
+
+	<select id="selectSample" resultMap="sample">
+
+			SELECT
+				KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+			FROM KTS_BOARD
+			WHERE KTS_ID=#{id}
+
+	</select>
+
+	<select id="selectSampleList" parameterType="searchVO" resultType="egovMap">
+
+			SELECT
+				KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+			FROM KTS_BOARD
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND	KTS_ID LIKE '%' || #{searchKeyword} || '%'
+					</when>
+		            <when test="searchCondition == 1">
+						AND	KTS_NAME LIKE '%' || #{searchKeyword} || '%'
+					</when>
+				</choose>
+			</if>
+			ORDER BY KTS_ID DESC
+			OFFSET #firstIndex# ROWS
+			FETCH NEXT #recordCountPerPage# ROWS ONLY	
+	</select>
+
+	<select id="selectSampleListTotCnt" parameterType="searchVO" resultType="int">
+
+			SELECT COUNT(*) totcnt
+			FROM KTS_BOARD
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND KTS_ID LIKE '%' || #{searchKeyword} || '%'
+					</when>
+		            <when test="searchCondition == 1">
+						AND	KTS_NAME LIKE '%' || #{searchKeyword} || '%'
+					</when>
+				</choose>
+			</if>
+	</select>
+
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Sample">
+
+	<typeAlias  alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.KTS_SampleDefaultVO"/>
+
+	<resultMap id="sample" class="egovframework.example.sample.service.KTS_SampleVO">
+		<result property="id" column="KTS_ID"/>
+		<result property="name" column="KTS_NAME"/>
+		<result property="description" column="KTS_DESCRIPTION"/>
+		<result property="useYn" column="KTS_USE_YN"/>
+		<result property="regUser" column="KTS_REG_USER"/>
+	</resultMap>
+
+	<insert id="sampleDAO.insertSample">
+		<![CDATA[
+			INSERT INTO KTS_BOARD
+				( KTS_ID
+				  , KTS_NAME
+				  , KTS_DESCRIPTION
+				  , KTS_USE_YN
+				  , KTS_REG_USER )
+			VALUES ( #id#
+				  , #name#
+				  , #description#
+				  , #useYn#
+				  , #regUser# )
+		]]>
+	</insert>
+	
+	<update id="sampleDAO.updateSample">
+		<![CDATA[
+			UPDATE KTS_BOARD
+			SET KTS_ID=#id#
+				, KTS_NAME=#name#
+				, KTS_DESCRIPTION=#description#
+				, KTS_USE_YN=#useYn#
+			WHERE KTS_ID=#id#
+		]]>
+	</update>
+	
+	<delete id="sampleDAO.deleteSample">
+		<![CDATA[
+			DELETE FROM KTS_BOARD 
+			WHERE KTS_ID=#id#
+		]]>
+	</delete>
+    
+    <select id="sampleDAO.selectSample" resultMap="sample">
+        <![CDATA[
+            SELECT
+                KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+            FROM KTS_BOARD
+            WHERE KTS_ID=#id#
+        ]]>
+    </select>
+	
+	<select id="sampleDAO.selectSampleList" parameterClass="searchVO" resultClass="egovMap">
+
+			SELECT
+				KTS_ID, KTS_NAME, KTS_DESCRIPTION, KTS_USE_YN, KTS_REG_USER
+			FROM KTS_BOARD
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				KTS_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				KTS_NAME LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			ORDER BY KTS_ID DESC
+			OFFSET #firstIndex# ROWS
+			FETCH NEXT #recordCountPerPage# ROWS ONLY	
+	</select>
+	
+	<select id="sampleDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">
+
+			SELECT COUNT(*) totcnt
+			FROM KTS_BOARD
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				KTS_ID LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				KTS_NAME LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+	</select>
+
+</sqlMap>
