@@ -83,43 +83,43 @@
     		</colgroup>
     		<c:if test="${registerFlag == 'modify'}">
         		<tr>
-        			<td class="tbtd_caption"><label for="id"><spring:message code="title.sample.id" /></label></td>
+        			<td class="tbtd_caption"><label for="hghId"><spring:message code="title.sample.id" /></label></td>
         			<td class="tbtd_content">
-        				<form:input path="id" cssClass="essentiality" maxlength="10" readonly="true" />
+        				<form:input path="hghId" cssClass="essentiality" maxlength="10" readonly="true" />
         			</td>
         		</tr>
     		</c:if>
     		<tr>
-    			<td class="tbtd_caption"><label for="name"><spring:message code="title.sample.name" /></label></td>
+    			<td class="tbtd_caption"><label for="hghName"><spring:message code="title.sample.name" /></label></td>
     			<td class="tbtd_content">
-    				<form:input path="name" maxlength="30" cssClass="txt"/>
-    				&nbsp;<form:errors path="name" />
+    				<form:input path="HGH_Name" maxlength="30" cssClass="txt"/>
+    				&nbsp;<form:errors path="HGH_Name" />
     			</td>
     		</tr>
     		<tr>
-    			<td class="tbtd_caption"><label for="useYn"><spring:message code="title.sample.useYn" /></label></td>
+    			<td class="tbtd_caption"><label for="hghUseYn"><spring:message code="title.sample.useYn" /></label></td>
     			<td class="tbtd_content">
-    				<form:select path="useYn" cssClass="use">
+    				<form:select path="hghUseYn" cssClass="use">
     					<form:option value="Y" label="Yes" />
     					<form:option value="N" label="No" />
     				</form:select>
     			</td>
     		</tr>
     		<tr>
-    			<td class="tbtd_caption"><label for="description"><spring:message code="title.sample.description" /></label></td>
+    			<td class="tbtd_caption"><label for="hghDescription"><spring:message code="title.sample.description" /></label></td>
     			<td class="tbtd_content">
-    				<form:textarea path="description" rows="5" cols="58" />&nbsp;<form:errors path="description" />
+    				<form:textarea path="hghDescription" rows="5" cols="58" />&nbsp;<form:errors path="description" />
                 </td>
     		</tr>
     		<tr>
     			<td class="tbtd_caption"><label for="regUser"><spring:message code="title.sample.regUser" /></label></td>
     			<td class="tbtd_content">
                     <c:if test="${registerFlag == 'modify'}">
-        				<form:input path="regUser" maxlength="10" cssClass="essentiality" readonly="true" />
+        				<form:input path="regUser" maxlength="10" cssClass="essentiality" readonly="true"/>
         				&nbsp;<form:errors path="regUser" /></td>
                     </c:if>
                     <c:if test="${registerFlag != 'modify'}">
-        				<form:input path="regUser" maxlength="10" cssClass="txt"  />
+        				<form:input path="regUser" maxlength="10" cssClass="txt" />
         				&nbsp;<form:errors path="regUser" /></td>
                     </c:if>
     		</tr>
