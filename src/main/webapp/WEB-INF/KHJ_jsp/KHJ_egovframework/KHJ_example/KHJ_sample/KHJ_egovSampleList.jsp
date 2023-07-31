@@ -24,7 +24,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><spring:message code="title.sample" /></title>
-    <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value='/css/KHJ_egovframework/sample.css'/>"/>
     <script type="text/javaScript" language="javascript" defer="defer">
         <!--
         /* 글 수정 화면 function */
@@ -64,7 +64,7 @@
         	<!-- 타이틀 -->
         	<div id="title">
         		<ul>
-        			<li><img src="<c:url value='/images/egovframework/example/title_dot.gif'/>" alt=""/><spring:message code="list.sample" /></li>
+        			<li><img src="<c:url value='/images/KHJ_egovframework/KHJ_example/title_dot.gif'/>" alt=""/><spring:message code="list.sample" /></li>
         		</ul>
         	</div>
         	<!-- // 타이틀 -->
@@ -83,7 +83,7 @@
         			<li>
         	            <span class="btn_blue_l">
         	                <a href="javascript:fn_egov_selectList();"><spring:message code="button.search" /></a>
-        	                <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+        	                <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
         	            </span>
         	        </li>
                 </ul>
@@ -130,7 +130,7 @@
         	      <li>
         	          <span class="btn_blue_l">
         	              <a href="javascript:fn_egov_addView();"><spring:message code="button.create" /></a>
-                          <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+                          <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
                       </span>
                   </li>
               </ul>

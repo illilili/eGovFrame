@@ -27,7 +27,7 @@
     <title>Sample <c:if test="${registerFlag == 'create'}"><spring:message code="button.create" /></c:if>
                   <c:if test="${registerFlag == 'modify'}"><spring:message code="button.modify" /></c:if>
     </title>
-    <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value='/css/KHJ_egovframework/sample.css'/>"/>
     
     <!--For Commons Validator Client Side-->
     <script type="text/javascript" src="<c:url value='/KHJ_cmmn/KHJ_validator.do'/>"></script>
@@ -68,7 +68,7 @@
     	<!-- 타이틀 -->
     	<div id="title">
     		<ul>
-    			<li><img src="<c:url value='/images/egovframework/example/title_dot.gif'/>" alt=""/>
+    			<li><img src="<c:url value='/images/KHJ_egovframework/KHJ_example/title_dot.gif'/>" alt=""/>
                     <c:if test="${registerFlag == 'create'}"><spring:message code="button.create" /></c:if>
                     <c:if test="${registerFlag == 'modify'}"><spring:message code="button.modify" /></c:if>
                 </li>
@@ -130,7 +130,7 @@
     			<li>
                     <span class="btn_blue_l">
                         <a href="javascript:fn_egov_selectList();"><spring:message code="button.list" /></a>
-                        <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+                        <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
                     </span>
                 </li>
     			<li>
@@ -139,21 +139,21 @@
                             <c:if test="${registerFlag == 'create'}"><spring:message code="button.create" /></c:if>
                             <c:if test="${registerFlag == 'modify'}"><spring:message code="button.modify" /></c:if>
                         </a>
-                        <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+                        <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
                     </span>
                 </li>
     			<c:if test="${registerFlag == 'modify'}">
                     <li>
                         <span class="btn_blue_l">
                             <a href="javascript:fn_egov_delete();"><spring:message code="button.delete" /></a>
-                            <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+                            <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
                         </span>
                     </li>
     			</c:if>
     			<li>
                     <span class="btn_blue_l">
                         <a href="javascript:document.detailForm.reset();"><spring:message code="button.reset" /></a>
-                        <img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
+                        <img src="<c:url value='/images/KHJ_egovframework/KHJ_example/btn_bg_r.gif'/>" style="margin-left:6px;" alt=""/>
                     </span>
                 </li>
             </ul>
