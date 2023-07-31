@@ -76,7 +76,7 @@ public class KTS_EgovSampleController {
 	 * @return "egovSampleList"
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/egovSampleList.do")
+	@RequestMapping(value = "/KTS_egovSampleList.do")
 	public String selectSampleList(@ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
@@ -100,7 +100,7 @@ public class KTS_EgovSampleController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
-		return "sample/egovSampleList";
+		return "sample/KTS_egovSampleList";
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class KTS_EgovSampleController {
 
 		sampleService.insertSample(KTS_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KTS_egovSampleList.do";
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class KTS_EgovSampleController {
 
 		sampleService.updateSample(KTS_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KTS_egovSampleList.do";
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class KTS_EgovSampleController {
 	public String deleteSample(KTS_SampleVO KTS_sampleVO, @ModelAttribute("KTS_searchVO") KTS_SampleDefaultVO KTS_searchVO, SessionStatus status) throws Exception {
 		sampleService.deleteSample(KTS_sampleVO);
 		status.setComplete();
-		return "forward:/egovSampleList.do";
+		return "forward:/KTS_egovSampleList.do";
 	}
 
 }
