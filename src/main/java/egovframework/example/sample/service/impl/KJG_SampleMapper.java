@@ -1,5 +1,5 @@
 /*
- * Copyright 2008-2009 the original author or authors.
+ * Copyright 2011 MOPAS(Ministry of Public Administration and Security).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package egovframework.example.sample.service;
+package egovframework.example.sample.service.impl;
 
 import java.util.List;
 
+import egovframework.example.sample.service.KJG_SampleDefaultVO;
+import egovframework.example.sample.service.KJG_SampleVO;
+
+import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+
 /**
- * @Class Name : EgovSampleService.java
- * @Description : EgovSampleService Class
- * @Modification Information
- * @
- * @  수정일      수정자              수정내용
- * @ ---------   ---------   -------------------------------
- * @ 2009.03.16           최초생성
+ * sample에 관한 데이터처리 매퍼 클래스
  *
- * @author 개발프레임웍크 실행환경 개발팀
- * @since 2009. 03.16
+ * @author  표준프레임워크센터
+ * @since 2014.01.24
  * @version 1.0
- * @see
+ * @see <pre>
+ *  == 개정이력(Modification Information) ==
  *
- *  Copyright (C) by MOPAS All right reserved.
+ *          수정일          수정자           수정내용
+ *  ----------------    ------------    ---------------------------
+ *   2014.01.24        표준프레임워크센터          최초 생성
+ *
+ * </pre>
  */
-public interface EgovSampleService {
+@Mapper("sampleMapper")
+public interface KJG_SampleMapper {
 
 	/**
 	 * 글을 등록한다.
@@ -41,7 +46,7 @@ public interface EgovSampleService {
 	 * @return 등록 결과
 	 * @exception Exception
 	 */
-	String insertSample(SampleVO vo) throws Exception;
+	void insertSample(KJG_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 수정한다.
@@ -49,7 +54,7 @@ public interface EgovSampleService {
 	 * @return void형
 	 * @exception Exception
 	 */
-	void updateSample(SampleVO vo) throws Exception;
+	void updateSample(KJG_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 삭제한다.
@@ -57,7 +62,7 @@ public interface EgovSampleService {
 	 * @return void형
 	 * @exception Exception
 	 */
-	void deleteSample(SampleVO vo) throws Exception;
+	void deleteSample(KJG_SampleVO vo) throws Exception;
 
 	/**
 	 * 글을 조회한다.
@@ -65,7 +70,7 @@ public interface EgovSampleService {
 	 * @return 조회한 글
 	 * @exception Exception
 	 */
-	SampleVO selectSample(SampleVO vo) throws Exception;
+	KJG_SampleVO selectSample(KJG_SampleVO vo) throws Exception;
 
 	/**
 	 * 글 목록을 조회한다.
@@ -73,7 +78,7 @@ public interface EgovSampleService {
 	 * @return 글 목록
 	 * @exception Exception
 	 */
-	List<?> selectSampleList(SampleDefaultVO searchVO) throws Exception;
+	List<?> selectSampleList(KJG_SampleDefaultVO searchVO) throws Exception;
 
 	/**
 	 * 글 총 갯수를 조회한다.
@@ -81,6 +86,6 @@ public interface EgovSampleService {
 	 * @return 글 총 갯수
 	 * @exception
 	 */
-	int selectSampleListTotCnt(SampleDefaultVO searchVO);
+	int selectSampleListTotCnt(KJG_SampleDefaultVO searchVO);
 
 }

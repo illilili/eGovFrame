@@ -6,7 +6,7 @@
 <form-validation>
 
     <formset>
-        <form name="sampleVO">
+        <form name="KJG_SampleVO">
         	<field property="name" depends="required">
         		<arg0 key="title.sample.name" />
 			</field>

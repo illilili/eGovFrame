@@ -17,9 +17,9 @@ package egovframework.example.sample.web;
 
 import java.util.List;
 
-import egovframework.example.sample.service.EgovSampleService;
-import egovframework.example.sample.service.SampleDefaultVO;
-import egovframework.example.sample.service.SampleVO;
+import egovframework.example.sample.service.KJG_EgovSampleService;
+import egovframework.example.sample.service.KJG_SampleDefaultVO;
+import egovframework.example.sample.service.KJG_SampleVO;
 
 import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -55,11 +55,11 @@ import org.springmodules.validation.commons.DefaultBeanValidator;
  */
 
 @Controller
-public class EgovSampleController {
+public class KJG_EgovSampleController {
 
 	/** EgovSampleService */
 	@Resource(name = "sampleService")
-	private EgovSampleService sampleService;
+	private KJG_EgovSampleService sampleService;
 
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
@@ -77,7 +77,7 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/egovSampleList.do")
-	public String selectSampleList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model) throws Exception {
+	public String selectSampleList(@ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
 		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
@@ -111,32 +111,32 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.GET)
-	public String addSampleView(@ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		model.addAttribute("sampleVO", new SampleVO());
+	public String addSampleView(@ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, Model model) throws Exception {
+		model.addAttribute("sampleVO", new KJG_SampleVO());
 		return "sample/egovSampleRegister";
 	}
 
 	/**
 	 * 글을 등록한다.
-	 * @param sampleVO - 등록할 정보가 담긴 VO
+	 * @param kJG_SampleVO - 등록할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
 	 * @return "forward:/egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.POST)
-	public String addSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String addSample(@ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, KJG_SampleVO SampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
 		// Server-Side Validation
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(SampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("sampleVO", SampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.insertSample(sampleVO);
+		sampleService.insertSample(SampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
@@ -150,61 +150,61 @@ public class EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSampleView.do")
-	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") SampleDefaultVO searchVO, Model model) throws Exception {
-		SampleVO sampleVO = new SampleVO();
-		sampleVO.setId(id);
+	public String updateSampleView(@RequestParam("selectedId") String id, @ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, Model model) throws Exception {
+		KJG_SampleVO kJG_SampleVO = new KJG_SampleVO();
+		kJG_SampleVO.setId(id);
 		// 변수명은 CoC 에 따라 sampleVO
-		model.addAttribute(selectSample(sampleVO, searchVO));
+		model.addAttribute(selectSample(kJG_SampleVO, searchVO));
 		return "sample/egovSampleRegister";
 	}
 
 	/**
 	 * 글을 조회한다.
-	 * @param sampleVO - 조회할 정보가 담긴 VO
+	 * @param kJG_SampleVO - 조회할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
 	 * @return @ModelAttribute("sampleVO") - 조회한 정보
 	 * @exception Exception
 	 */
-	public SampleVO selectSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO) throws Exception {
-		return sampleService.selectSample(sampleVO);
+	public KJG_SampleVO selectSample(KJG_SampleVO kJG_SampleVO, @ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO) throws Exception {
+		return sampleService.selectSample(kJG_SampleVO);
 	}
 
 	/**
 	 * 글을 수정한다.
-	 * @param sampleVO - 수정할 정보가 담긴 VO
+	 * @param kJG_SampleVO - 수정할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
 	 * @return "forward:/egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping("/updateSample.do")
-	public String updateSample(@ModelAttribute("searchVO") SampleDefaultVO searchVO, SampleVO sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String updateSample(@ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, KJG_SampleVO kJG_SampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
-		beanValidator.validate(sampleVO, bindingResult);
+		beanValidator.validate(kJG_SampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("sampleVO", sampleVO);
+			model.addAttribute("sampleVO", kJG_SampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.updateSample(sampleVO);
+		sampleService.updateSample(kJG_SampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
 
 	/**
 	 * 글을 삭제한다.
-	 * @param sampleVO - 삭제할 정보가 담긴 VO
+	 * @param kJG_SampleVO - 삭제할 정보가 담긴 VO
 	 * @param searchVO - 목록 조회조건 정보가 담긴 VO
 	 * @param status
 	 * @return "forward:/egovSampleList.do"
 	 * @exception Exception
 	 */
 	@RequestMapping("/deleteSample.do")
-	public String deleteSample(SampleVO sampleVO, @ModelAttribute("searchVO") SampleDefaultVO searchVO, SessionStatus status) throws Exception {
-		sampleService.deleteSample(sampleVO);
+	public String deleteSample(KJG_SampleVO kJG_SampleVO, @ModelAttribute("searchVO") KJG_SampleDefaultVO searchVO, SessionStatus status) throws Exception {
+		sampleService.deleteSample(kJG_SampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}
