@@ -77,26 +77,26 @@ public class HGH_EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/egovSampleList.do")
-	public String selectSampleList(@ModelAttribute("searchVO") HGH_SampleDefaultVO HGH_searchVO, ModelMap model) throws Exception {
+	public String selectSampleList(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.sample */
-		HGH_searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-		HGH_searchVO.setPageSize(propertiesService.getInt("pageSize"));
+		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+		searchVO.setPageSize(propertiesService.getInt("pageSize"));
 
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(HGH_searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(HGH_searchVO.getPageUnit());
-		paginationInfo.setPageSize(HGH_searchVO.getPageSize());
+		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+		paginationInfo.setPageSize(searchVO.getPageSize());
 
-		HGH_searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		HGH_searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		HGH_searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		List<?> sampleList = sampleService.selectSampleList(HGH_searchVO);
+		List<?> sampleList = sampleService.selectSampleList(searchVO);
 		model.addAttribute("resultList", sampleList);
 
-		int totCnt = sampleService.selectSampleListTotCnt(HGH_searchVO);
+		int totCnt = sampleService.selectSampleListTotCnt(searchVO);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
@@ -125,18 +125,18 @@ public class HGH_EgovSampleController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/addSample.do", method = RequestMethod.POST)
-	public String addSample(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, HGH_SampleVO HGH_sampleVO, BindingResult bindingResult, Model model, SessionStatus status)
+	public String addSample(@ModelAttribute("searchVO") HGH_SampleDefaultVO searchVO, HGH_SampleVO HGH_SampleVO, BindingResult bindingResult, Model model, SessionStatus status)
 			throws Exception {
 
 		// Server-Side Validation
-		beanValidator.validate(HGH_sampleVO, bindingResult);
+		beanValidator.validate(HGH_SampleVO, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("HGH_sampleVO", HGH_sampleVO);
+			model.addAttribute("HGH_sampleVO", HGH_SampleVO);
 			return "sample/egovSampleRegister";
 		}
 
-		sampleService.insertSample(HGH_sampleVO);
+		sampleService.insertSample(HGH_SampleVO);
 		status.setComplete();
 		return "forward:/egovSampleList.do";
 	}

@@ -23,7 +23,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <c:set var="registerFlag" value="${empty HGH_sampleVO.id ? 'create' : 'modify'}"/>
+    <c:set var="registerFlag" value="${empty HGH_SampleVO.id ? 'create' : 'modify'}"/>
     <title>Sample <c:if test="${registerFlag == 'create'}"><spring:message code="button.create" /></c:if>
                   <c:if test="${registerFlag == 'modify'}"><spring:message code="button.modify" /></c:if>
     </title>
@@ -31,7 +31,7 @@
     
     <!--For Commons Validator Client Side-->
     <script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script>
-    <validator:javascript formName="HGH_sampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
+    <validator:javascript formName="HGH_SampleVO" staticJavascript="false" xhtml="true" cdata="false"/>
     
     <script type="text/javaScript" language="javascript" defer="defer">
         <!--
@@ -63,7 +63,7 @@
 </head>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
 
-<form:form modelAttribute="HGH_sampleVO" id="detailForm" name="detailForm">
+<form:form modelAttribute="HGH_SampleVO" id="detailForm" name="detailForm">
     <div id="content_pop">
     	<!-- 타이틀 -->
     	<div id="title">
@@ -83,32 +83,32 @@
     		</colgroup>
     		<c:if test="${registerFlag == 'modify'}">
         		<tr>
-        			<td class="tbtd_caption"><label for="hghId"><spring:message code="title.sample.id" /></label></td>
+        			<td class="tbtd_caption"><label for="Id"><spring:message code="title.sample.id" /></label></td>
         			<td class="tbtd_content">
-        				<form:input path="hghId" cssClass="essentiality" maxlength="10" readonly="true" />
+        				<form:input path="Id" cssClass="essentiality" maxlength="10" readonly="true" />
         			</td>
         		</tr>
     		</c:if>
     		<tr>
-    			<td class="tbtd_caption"><label for="hghName"><spring:message code="title.sample.name" /></label></td>
+    			<td class="tbtd_caption"><label for="Name"><spring:message code="title.sample.name" /></label></td>
     			<td class="tbtd_content">
-    				<form:input path="HGH_Name" maxlength="30" cssClass="txt"/>
-    				&nbsp;<form:errors path="HGH_Name" />
+    				<form:input path="Name" maxlength="30" cssClass="txt"/>
+    				&nbsp;<form:errors path="Name" />
     			</td>
     		</tr>
     		<tr>
-    			<td class="tbtd_caption"><label for="hghUseYn"><spring:message code="title.sample.useYn" /></label></td>
+    			<td class="tbtd_caption"><label for="UseYn"><spring:message code="title.sample.useYn" /></label></td>
     			<td class="tbtd_content">
-    				<form:select path="hghUseYn" cssClass="use">
+    				<form:select path="UseYn" cssClass="use">
     					<form:option value="Y" label="Yes" />
     					<form:option value="N" label="No" />
     				</form:select>
     			</td>
     		</tr>
     		<tr>
-    			<td class="tbtd_caption"><label for="hghDescription"><spring:message code="title.sample.description" /></label></td>
+    			<td class="tbtd_caption"><label for="Description"><spring:message code="title.sample.description" /></label></td>
     			<td class="tbtd_content">
-    				<form:textarea path="hghDescription" rows="5" cols="58" />&nbsp;<form:errors path="description" />
+    				<form:textarea path="Description" rows="5" cols="58" />&nbsp;<form:errors path="description" />
                 </td>
     		</tr>
     		<tr>
